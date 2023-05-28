@@ -1,6 +1,6 @@
 ##Install
 ```
-npm run install
+npm install
 ```
 ##Run
 ###Start the app
