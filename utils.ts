@@ -35,14 +35,14 @@ export function anonymizeString(str: string, length: number = 8): string {
 }
 
 export function anonymizeCustomer(doc: Customer): Customer {
+  const emailArr = doc.email.split("@");
+  emailArr[0] = anonymizeString(doc.email);
+
   return {
     ...doc,
     firstName: anonymizeString(doc.firstName),
     lastName: anonymizeString(doc.lastName),
-    email: doc.email
-      .split("@")
-      .splice(0, 1, anonymizeString(doc.email))
-      .join("@"),
+    email: emailArr.join("@"),
     address: {
       ...doc.address,
       line1: anonymizeString(doc.address.line1),
